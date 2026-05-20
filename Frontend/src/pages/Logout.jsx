@@ -13,7 +13,7 @@ import {
 } from "../MyContext";
 
 function Logout() {
-
+const API = import.meta.env.VITE_API_URL;
   const [message, setMessage] =
     useState("");
 
@@ -36,7 +36,7 @@ function Logout() {
       try {
 
         const response = await fetch(
-          "http://localhost:8080/auth/logout",
+          `${API}/auth/logout`,
           {
             method: "GET",
             credentials: "include",
