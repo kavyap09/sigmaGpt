@@ -1,78 +1,3 @@
-// import { useState, useEffect } from "react";
-// import "./App.css";
-// import Sidebar from "./Sidebar";
-// import ChatWindow from "./ChatWindow";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { MyContext } from "./MyContext";
-// import { v1 as uuidv1 } from "uuid";
-// import Signup from "./pages/Signup";
-// import Login from "./pages/Login";
-// import Logout from "./pages/Logout";
-
-// function App() {
-//   const [prompt, setPrompt] = useState("");
-//   const [reply, setReply] = useState(null);
-//   const [currThreadId, setcurrThreadId] = useState(uuidv1());
-//   const [prevChats, setprevChats] = useState([]);
-//   const [newChat, setnewChat] = useState(true);
-//   const [allThreads, setallThreads] = useState([]);
-//   const [user, setUser] = useState(null); // 👈 track logged in user
-
-//   // 🔹 On app load, check if session exists
-//   useEffect(() => {
-//     const bootstrap = async () => {
-//       try {
-//         const res = await fetch("http://localhost:8080/auth/me", {
-//           credentials: "include",
-//         });
-//         if (res.ok) {
-//           const me = await res.json();
-//           setUser(me); // ✅ restore logged-in user
-//         } else {
-//           setUser(null);
-//         }
-//       } catch {
-//         setUser(null);
-//       }
-//     };
-//     bootstrap();
-//   }, []);
-
-//   const providerValues = {
-//     prompt,
-//     setPrompt,
-//     reply,
-//     setReply,
-//     currThreadId,
-//     setcurrThreadId,
-//     prevChats,
-//     setprevChats,
-//     newChat,
-//     setnewChat,
-//     allThreads,
-//     setallThreads,
-//     user,
-//     setUser, // 👈 expose in context
-//   };
-
-//   return (
-//     <div className="app">
-//       <MyContext.Provider value={providerValues}>
-//         <BrowserRouter>
-//           <Sidebar />
-//           <Routes>
-//             <Route path="/" element={<ChatWindow />} />
-//             <Route path="/signup" element={<Signup />} />
-//             <Route path="/login" element={<Login />} />
-//             <Route path="/logout" element={<Logout />} />
-//           </Routes>
-//         </BrowserRouter>
-//       </MyContext.Provider>
-//     </div>
-//   );
-// }
-
-// export default App;
 import { useState, useEffect } from "react";
 import "./App.css";
 
@@ -94,7 +19,7 @@ import { MyContext } from "./MyContext";
 import { v1 as uuidv1 } from "uuid";
 
 function App() {
-
+const API = import.meta.env.VITE_API_URL;
   // states
   const [prompt, setPrompt] =
     useState("");
@@ -125,7 +50,7 @@ function App() {
       try {
 
         const response = await fetch(
-          "http://localhost:8080/auth/me",
+          `${API}/auth/me`,
           {
             credentials: "include",
           }
