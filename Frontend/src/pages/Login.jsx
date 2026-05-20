@@ -12,7 +12,7 @@ import {
 } from "../MyContext";
 
 function Login() {
-
+const API = import.meta.env.VITE_API_URL;
   const [username, setUsername] =
     useState("");
 
@@ -38,7 +38,7 @@ function Login() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/auth/login",
+        `${API}/auth/login`,
         {
           method: "POST",
 
