@@ -9,8 +9,12 @@ import { MyContext } from "./MyContext";
 
 import { v1 as uuidv1 } from "uuid";
 
+import blacklogo from "./assets/blacklogo.png";
+
 function Sidebar() {
-const API = import.meta.env.VITE_API_URL;
+
+  const API = import.meta.env.VITE_API_URL;
+
   const {
     allThreads,
     setallThreads,
@@ -159,7 +163,7 @@ const API = import.meta.env.VITE_API_URL;
       <button onClick={createNewchat}>
 
         <img
-          src="src/assets/blacklogo.png"
+          src={blacklogo}
           className="logo"
           alt="gpt logo"
         />
