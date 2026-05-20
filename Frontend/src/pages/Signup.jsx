@@ -12,7 +12,7 @@ import {
 } from "../MyContext";
 
 function Signup() {
-
+const API = import.meta.env.VITE_API_URL;
   const [username, setUsername] =
     useState("");
 
@@ -38,7 +38,7 @@ function Signup() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/auth/signup",
+        `${API}/auth/signup`,
         {
           method: "POST",
 
