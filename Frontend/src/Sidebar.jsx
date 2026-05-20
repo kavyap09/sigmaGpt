@@ -10,7 +10,7 @@ import { MyContext } from "./MyContext";
 import { v1 as uuidv1 } from "uuid";
 
 function Sidebar() {
-
+const API = import.meta.env.VITE_API_URL;
   const {
     allThreads,
     setallThreads,
@@ -35,7 +35,7 @@ function Sidebar() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/api/thread",
+        `${API}/api/thread`,
         {
           credentials: "include",
         }
@@ -92,7 +92,7 @@ function Sidebar() {
     try {
 
       const response = await fetch(
-        `http://localhost:8080/api/thread/${newthreadId}`,
+        `${API}/api/thread/${newthreadId}`,
         {
           credentials: "include",
         }
@@ -122,7 +122,7 @@ function Sidebar() {
     try {
 
       const response = await fetch(
-        `http://localhost:8080/api/thread/${threadId}`,
+        `${API}/api/thread/${threadId}`,
         {
           method: "DELETE",
           credentials: "include",
