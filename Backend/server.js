@@ -18,7 +18,10 @@ app.use(express.json());
 // cors
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://sigmagpt-1-so4n.onrender.com"
+    ],
     credentials: true,
   })
 );
@@ -30,9 +33,9 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,
+      secure: true,
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: "none",
     },
   })
 );
